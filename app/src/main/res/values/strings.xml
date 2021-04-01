@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Rental Mobil</string>
+    <string name="readyAcc"><u>Already have an account? Click Here</u></string>
+    <string name="signUptxt"><u>You need account? Sign Up</u></string>
+
+    <string name="mailVer">Email</string>
+    <string name="passVer">Password</string>
+    <string name="logVer">Login</string>
+    <string name="nameVer">Name</string>
+    <string name="regVer">Register</string>
+    <string name="noVer">Mobile phone number</string>
+
+
+</resources>
