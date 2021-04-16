@@ -88,34 +88,34 @@ public class FormRentActivity extends AppCompatActivity {
             }
         });
 
-        btnPsn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String strNama = etNamaPsn.getText().toString();
-                String strAlamat = etAlamatPsn.getText().toString();
-                String strNohp = etNohpPsn.getText().toString();
-                String strSpin = getValueSpin;
-                String strDurasi = rd.getText().toString();
-                String harga;
-                if (strSpin.equals("Avanza Veloz")){
-                    harga = "200000";
-                } else if (strSpin.equals("Daihatsu Ayla")){
-                    harga = "200000";
-                } else {
-                    harga = "500000";
-                }
-                Boolean insertPsn = db.insertPesanan(strNama, strAlamat, strNohp, strDurasi, harga);
-                if (insertPsn == true){
-                    Toast.makeText(getApplicationContext(),"Pesanan Berhasil Dilakukan",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(FormRentActivity.this,DashActivity.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(),"Pesanan Gagal",Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+//        btnPsn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String strNama = etNamaPsn.getText().toString();
+//                String strAlamat = etAlamatPsn.getText().toString();
+//                String strNohp = etNohpPsn.getText().toString();
+//                String strSpin = getValueSpin;
+//                String strDurasi = rd.getText().toString();
+//                String harga;
+//                if (strSpin.equals("Avanza Veloz")){
+//                    harga = "200000";
+//                } else if (strSpin.equals("Daihatsu Ayla")){
+//                    harga = "200000";
+//                } else {
+//                    harga = "500000";
+//                }
+//                Boolean insertPsn = db.insertPesanan(strNama, strAlamat, strNohp, strDurasi, harga);
+//                if (insertPsn == true){
+//                    Toast.makeText(getApplicationContext(),"Pesanan Berhasil Dilakukan",Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent(FormRentActivity.this,DashActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                } else {
+//                    Toast.makeText(getApplicationContext(),"Pesanan Gagal",Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        });
 
 
     }
