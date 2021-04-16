@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLeft"
         android:layout_width="wrap_content"
@@ -36,6 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="220dp"
@@ -44,8 +47,7 @@
         android:src="@drawable/header"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-49dp" />
-
+        tools:layout_editor_absoluteY="2dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,7 +65,7 @@
         android:id="@+id/tVTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Car"
+        android:text="Car"
         android:textColor="@color/bkcolor"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -91,6 +93,8 @@
         app:layout_constraintTop_toBottomOf="@+id/imgHeader"
         app:layout_constraintVertical_bias="0.103" />
 
+
+    
     <EditText
         android:id="@+id/userET"
         android:layout_width="278dp"
@@ -150,8 +154,9 @@
         android:id="@+id/tvRegisterLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/signUptxt"
+        app:layout_constraintBottom_toTopOf="@+id/tvSosmed"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@+id/LogBtn" />
@@ -160,7 +165,7 @@
         android:id="@+id/tvSosmed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:text="Our Social Media"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"

@@ -9,10 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginActivity">
-        <activity android:name="com.example.RentalActivity.DashboardActivity"></activity>
-        <activity android:name="com.example.RentalActivity.SignUpActivity" />
-        <activity android:name="com.example.RentalActivity.MainActivityB" />
-        <activity android:name="com.example.RentalActivity.MainActivity">
+        <activity android:name=".DetailPesananActivity"></activity>
+        <activity android:name=".DashActivity" />
+        <activity android:name=".DetailCatalogActivity8" />
+        <activity android:name=".DetailCatalogActivity7" />
+        <activity android:name=".DetailCatalogActivity6" />
+        <activity android:name=".DetailCatalogActivity5" />
+        <activity android:name=".DetailCatalogActivity4" />
+        <activity android:name=".DetailCatalogActivity3" />
+        <activity android:name=".FormRentActivity" />
+        <activity android:name=".DetailCatalogActivity2" />
+        <activity android:name=".DetailCatalogActivity1" />
+        <activity android:name=".CatalogActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".MainActivityB" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

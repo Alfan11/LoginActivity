@@ -2,15 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/homeNav"
+        android:enabled="true"
         android:icon="@drawable/ic_home"
         android:title="Home"/>
 
-    <item android:id="@+id/accountNav"
-        android:icon="@drawable/ic_account"
-        android:title="Home"/>
+<!--    <item android:id="@+id/DetailNav"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_record"-->
+<!--        android:title="Detail Pesanan"/>-->
 
-    <item android:id="@+id/settingNav"
-        android:icon="@drawable/ic_search"
-        android:title="Home"/>
+    <item android:id="@+id/logoutNav"
+        android:enabled="true"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout"/>
 
 </menu>

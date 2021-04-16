@@ -12,14 +12,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText emailText,passText;
-    Button button;
+    //login
+    DBHelper db;
+
+
+    EditText username,password;
+    TextInputLayout txEmail, txPassword;
+    Button buttonLog;
     TextView signUp;
     ImageButton fb,ig;
     private String TAG = "Message";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,32 +34,57 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"onCreate");
 
 
-        emailText = findViewById(R.id.userET);
-        passText = findViewById(R.id.passET);
-        button = findViewById(R.id.LogBtn);
+        username = (EditText)findViewById(R.id.userET);
+        password = (EditText)findViewById(R.id.passET);
+        buttonLog = findViewById(R.id.LogBtn);
         signUp = findViewById(R.id.tvRegisterLog);
+        //signUp = findViewById(R.id.tvRegisterLog);
         fb = findViewById(R.id.FbLogo);
         ig = findViewById(R.id.instaLogo);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        //database
+        db = new DBHelper(this);
+
+        //login
+        buttonLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailStr = emailText.getText().toString();
-                String passStr = passText.getText().toString();
-
-                Intent i = new Intent(getApplicationContext(),MainActivityB.class);
-                i.putExtra("email", emailStr);
-                i.putExtra("pass", passStr);
-                startActivity(i);
+                String strUsername = username.getText().toString();
+                String strPassword = password.getText().toString();
+                Boolean log = db.cekLogin(strUsername,strPassword);
+                if (log ==true){
+                    Boolean updateSession = db.upgradeSession("ada",1);
+                    if (updateSession == true){
+                        Toast.makeText(getApplicationContext(),"Berhasil masuk", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(MainActivity.this,DashActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this,"Login Gagal",Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
+        //register
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(i);
+                Intent registerIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(registerIntent);
+                finish();
             }
         });
+
+        //Register
+        //signUp.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+           // public void onClick(View v) {
+             //   Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
+               // startActivity(i);
+            //}
+        //});
 
         ig.setOnClickListener(new View.OnClickListener() {
             @Override

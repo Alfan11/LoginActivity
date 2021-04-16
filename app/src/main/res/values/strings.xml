@@ -11,4 +11,18 @@
     <string name="noVer">Mobile phone number</string>
 
 
+    <string name="country_prompt">List Mobil</string>
+    <string name="DescriptionCard">Rental Mobil PBB adalah salah satu Rental mobil terbaik dan terpecaya dikawasan Telkom University</string>
+    <string-array name="country_arrays">
+        <item>Avanza Veloz</item>
+        <item>Daihatsu Ayla</item>
+        <item>Toyota Alphard</item>
+        <item>Toyota Fortuner</item>
+        <item>Suzuki Jimny</item>
+        <item>Suzuki Ertiga</item>
+        <item>Honda Jazz</item>
+        <item>Honda Crv</item>
+    </string-array>
+
+
 </resources>
