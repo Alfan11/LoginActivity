@@ -51,17 +51,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String strUsername = username.getText().toString();
                 String strPassword = password.getText().toString();
-                Boolean log = db.cekLogin(strUsername,strPassword);
-                if (log ==true){
-                    Boolean updateSession = db.upgradeSession("ada",1);
-                    if (updateSession == true){
-                        Toast.makeText(getApplicationContext(),"Berhasil masuk", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(MainActivity.this,DashActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
+
+                if (strUsername.equals("") || strPassword.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Form Tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this,"Login Gagal",Toast.LENGTH_SHORT).show();
+                    Boolean log = db.cekLogin(strUsername, strPassword);
+                    if (log == true) {
+                        Boolean updateSession = db.upgradeSession("ada", 1);
+                        if (updateSession == true) {
+                            Toast.makeText(getApplicationContext(), "Berhasil masuk", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(MainActivity.this, DashActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Login Gagal, Sesuaikan Username & Password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

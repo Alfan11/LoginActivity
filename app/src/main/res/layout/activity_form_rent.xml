@@ -178,7 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"
                             android:layout_marginTop="5dp"
-                            android:entries="@array/country_arrays"
+                            android:entries="@array/listmobil"
                             android:prompt="@string/country_prompt" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,14 +194,14 @@
                             android:text="Durasi Sewa"
                             android:textColor="@color/black" />
                         <RadioGroup
-                            android:id="@+id/rgDurasiSewa"
+                            android:id="@+id/rgDurasi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_above="@+id/view_below"
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/fullday"
+                                android:id="@+id/rdFull"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -209,7 +209,7 @@
                                 android:text="24 Jam" />
 
                             <RadioButton
-                                android:id="@+id/halfday"
+                                android:id="@+id/rdHalf"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

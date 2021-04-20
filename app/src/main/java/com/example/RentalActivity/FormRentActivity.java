@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -30,7 +32,11 @@ public class FormRentActivity extends AppCompatActivity {
     DBHelper db;
     Button btnPsn;
     RadioGroup rg;
-    RadioButton rd;
+    RadioButton rd1,rd2;
+    String durasi = "";
+    String date="";
+    String valueofspin="";
+    String strHarga="";
     Cursor cursor;
 
     @Override
@@ -46,16 +52,42 @@ public class FormRentActivity extends AppCompatActivity {
         etNamaPsn = (EditText)findViewById(R.id.etNamaPs);
         etAlamatPsn = (EditText)findViewById(R.id.etAlamatPs);
         etNohpPsn = (EditText)findViewById(R.id.etNoHpPs);
+
+        //radiobuttongroup
+        rg = findViewById(R.id.rgDurasi);
+        rd1 = findViewById(R.id.rdFull);
+        rd2 = findViewById(R.id.rdHalf);
+
+        //spinner
         spinner = findViewById(R.id.inputSpinPs);
-        rg = findViewById(R.id.rgDurasiSewa);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.listmobil,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                valueofspin = spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
-
-        String getValueSpin = spinner.getSelectedItem().toString();
-
-        //Durasi
-        int radioId = rg.getCheckedRadioButtonId();
-        rd = findViewById(radioId);
+        //Radiogrup get durasi
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId==R.id.rdFull){
+                    durasi = "24 Jam";
+                } else if (checkedId==R.id.rdHalf){
+                    durasi = "12 Jam";
+                }
+            }
+        });
 
 
         //database
@@ -76,7 +108,7 @@ public class FormRentActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month+1;
-                        String date = day+"/"+month+"/"+year;
+                        date = day+"/"+month+"/"+year;
                         etDate.setText(date);
                     }
                 },year,month,day);
@@ -88,34 +120,63 @@ public class FormRentActivity extends AppCompatActivity {
             }
         });
 
-//        btnPsn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String strNama = etNamaPsn.getText().toString();
-//                String strAlamat = etAlamatPsn.getText().toString();
-//                String strNohp = etNohpPsn.getText().toString();
-//                String strSpin = getValueSpin;
-//                String strDurasi = rd.getText().toString();
-//                String harga;
-//                if (strSpin.equals("Avanza Veloz")){
-//                    harga = "200000";
-//                } else if (strSpin.equals("Daihatsu Ayla")){
-//                    harga = "200000";
-//                } else {
-//                    harga = "500000";
-//                }
-//                Boolean insertPsn = db.insertPesanan(strNama, strAlamat, strNohp, strDurasi, harga);
-//                if (insertPsn == true){
-//                    Toast.makeText(getApplicationContext(),"Pesanan Berhasil Dilakukan",Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(FormRentActivity.this,DashActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                } else {
-//                    Toast.makeText(getApplicationContext(),"Pesanan Gagal",Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//        });
+        btnPsn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String strNama = etNamaPsn.getText().toString();
+                String strAlt = etAlamatPsn.getText().toString();
+                String strNohp = etNohpPsn.getText().toString();
+                String strSpinner = valueofspin.trim();
+                String strDur = durasi.trim();
+                String strDate = date.trim();
+
+                if (strDur.equals("24 Jam") && strSpinner.equals("Avanza Veloz")){
+                    strHarga = "300000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Avanza Veloz")){
+                    strHarga = "200000";
+                }else if (strDur.equals("24 Jam") && strSpinner.equals("Daihatsu Ayla")){
+                    strHarga = "300000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Daihatsu Ayla")) {
+                    strHarga = "200000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Toyota Alphard")) {
+                    strHarga = "400000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Toyota Alphard")) {
+                    strHarga = "300000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Toyota Fortuner")) {
+                    strHarga = "350000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Toyota Fortuner")) {
+                    strHarga = "300000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Suzuki Jimny")) {
+                    strHarga = "350000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Suzuki Jimny")) {
+                    strHarga = "300000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Suzuki Ertiga")) {
+                    strHarga = "300000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Suzuki Ertiga")) {
+                    strHarga = "250000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda Jazz")) {
+                    strHarga = "350000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Honda Jazz")) {
+                    strHarga = "300000";
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda CrV")) {
+                    strHarga = "350000";
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Honda CrV")) {
+                    strHarga = "300000";
+                }
+
+
+                Boolean insertPesanan = db.insertPesanan(strNama, strAlt, strDur, strNohp, strDate, strSpinner, strHarga);
+                if (insertPesanan == true){
+                    Toast.makeText(getApplicationContext(),"Input sukses",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(FormRentActivity.this, DashActivity.class);
+                    startActivity(i);
+                    finish();
+                } else{
+                    Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
 
     }

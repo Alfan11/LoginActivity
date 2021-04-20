@@ -54,18 +54,24 @@ public class SignUpActivity extends AppCompatActivity {
                 String strPasswordConf = passwordConf.getText().toString();
                 String strMail = email.getText().toString();
                 String strnoHp = noHp.getText().toString();
-                if (strPassword.equals(strPasswordConf)){
-                    Boolean daftar = db.insertUser(strUsername,strPassword,strMail,strnoHp);
-                    if (daftar == true){
-                        Toast.makeText(getApplicationContext(),"Registrasi Berhasil",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(SignUpActivity.this,MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        Toast.makeText(getApplicationContext(),"Registrasi gagal",Toast.LENGTH_SHORT).show();
-                    }
+
+                if (strUsername.equals("") || strPassword.equals("") || strPasswordConf.equals("") || strMail.equals("") || strnoHp.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Form tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(),"Password tidak sama",Toast.LENGTH_SHORT).show();
+
+                    if (strPassword.equals(strPasswordConf)) {
+                        Boolean daftar = db.insertUser(strUsername, strPassword, strMail, strnoHp);
+                        if (daftar == true) {
+                            Toast.makeText(getApplicationContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(SignUpActivity.this, MainActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Registrasi gagal", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Password tidak sama", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

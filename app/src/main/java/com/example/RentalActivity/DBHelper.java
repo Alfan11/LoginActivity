@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE session(id integer PRIMARY KEY, login text)");
         db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, password text, email text, nohpin text)");
-        db.execSQL("CREATE TABLE pesanan(id integer PRIMARY KEY AUTOINCREMENT, nama text, alamat text, nohppsn text, durasi text, waktu text, harga text, mobil text)");
+        db.execSQL("CREATE TABLE pesanan(idtest integer PRIMARY KEY AUTOINCREMENT, namatest text, alamat text, durasi text, nohppsn text, date text, merkmobil text, harga text)");
         db.execSQL("INSERT INTO session(id, login) VALUES(1, 'kosong')");
     }
 
@@ -63,6 +63,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("password", password);
         contentValues.put("email",email);
         contentValues.put("nohpin",nohpin);
+
         long insert = db.insert("user", null, contentValues);
         if (insert == -1) {
             return false;
@@ -72,15 +73,16 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-//    Create Pesanan
-    public Boolean insertPesanan(String nama, String alamat, String nohppsn, String durasi, String harga){
+    //Insert test
+    public Boolean insertPesanan(String namatest ,String alamat, String durasi, String nphppsn, String date, String merkmobil, String harga){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("nama",nama);
+        contentValues.put("namatest",namatest);
         contentValues.put("alamat",alamat);
-        contentValues.put("nohppsn",nohppsn);
         contentValues.put("durasi",durasi);
-//        contentValues.put("waktu",waktu);
+        contentValues.put("nohppsn",nphppsn);
+        contentValues.put("date",date);
+        contentValues.put("merkmobil",merkmobil);
         contentValues.put("harga",harga);
         long insert = db.insert("pesanan",null,contentValues);
         if (insert == -1){
@@ -89,6 +91,27 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+
+
+
+////    Create Pesanan
+//    public Boolean insertPesanan(String nama, String alamat, String nohppsn, String durasi, String harga){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("nama",nama);
+//        contentValues.put("alamat",alamat);
+//        contentValues.put("nohppsn",nohppsn);
+//        contentValues.put("durasi",durasi);
+////        contentValues.put("waktu",waktu);
+//        contentValues.put("harga",harga);
+//        long insert = db.insert("pesanan",null,contentValues);
+//        if (insert == -1){
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
 
     //RetriveDataUser
     public Cursor alldata(){
