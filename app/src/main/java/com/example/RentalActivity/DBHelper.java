@@ -8,17 +8,33 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, "loginSQLite.db", null, 1);
     }
+    private static final String DATABASE_NAME = "loginSQLite.db";
+    private static final String DATABASE_PATH = "/data/data/com.example.loginactivity/databases";
+    private final String USER_TABLE = "user";
+    SQLiteDatabase db;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE session(id integer PRIMARY KEY, login text)");
         db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, password text, email text, nohpin text)");
-        db.execSQL("CREATE TABLE pesanan(idtest integer PRIMARY KEY AUTOINCREMENT, namatest text, alamat text, durasi text, nohppsn text, date text, merkmobil text, harga text)");
+        db.execSQL("CREATE TABLE pesanan(idtest integer PRIMARY KEY AUTOINCREMENT," +
+                " namatest text," +
+                " alamat text," +
+                " durasi text," +
+                " nohppsn text," +
+                " date text," +
+                " merkmobil text," +
+                " harga text" +
+                ")" +
+                "");
         db.execSQL("INSERT INTO session(id, login) VALUES(1, 'kosong')");
     }
 
@@ -93,34 +109,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-////    Create Pesanan
-//    public Boolean insertPesanan(String nama, String alamat, String nohppsn, String durasi, String harga){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("nama",nama);
-//        contentValues.put("alamat",alamat);
-//        contentValues.put("nohppsn",nohppsn);
-//        contentValues.put("durasi",durasi);
-////        contentValues.put("waktu",waktu);
-//        contentValues.put("harga",harga);
-//        long insert = db.insert("pesanan",null,contentValues);
-//        if (insert == -1){
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }
-
     //RetriveDataUser
     public Cursor alldata(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user",null);
         return cursor;
     }
-
-
 
     //login cek
     public Boolean cekLogin(String username, String password){
@@ -132,6 +126,31 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+
+    //opendb
+    private SQLiteDatabase openDatabase(){
+        String path = DATABASE_PATH + DATABASE_NAME;
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READWRITE);
+        return db;
+    }
+
+    //close
+    public void close(){
+        if(db != null){
+            db.close();
+        }
+    }
+
+    //getList
+    public Cursor getListContents(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM pesanan ",null);
+        return data;
+    }
+
+
 
 
 }

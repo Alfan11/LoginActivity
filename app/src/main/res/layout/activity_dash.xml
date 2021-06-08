@@ -50,37 +50,37 @@
                 app:layout_constraintBottom_toBottomOf="@id/imgHdCtg"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-<!--            <ImageView-->
-<!--                android:id="@+id/imgLogout"-->
-<!--                android:layout_width="35dp"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_marginEnd="18dp"-->
-<!--                android:padding="7dp"-->
-<!--                android:contentDescription="@string/app_name"-->
-<!--                android:src="@drawable/ic_logout"-->
-<!--                android:background="@drawable/menu_bk"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:tint="@color/white" />-->
+            <ImageButton
+                android:id="@+id/imgDetil"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="18dp"
+                android:padding="7dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
 
             <TextView
                 android:id="@+id/tvWelcomeDash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome in our application"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/imgMenuDash"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="20dp"
-                android:textSize="23sp"
                 android:textAlignment="center"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgMenuDash"
                 app:layout_constraintTop_toTopOf="parent" />
-                />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,28 +94,21 @@
                 app:layout_constraintTop_toBottomOf="@id/tvWelcomeDash"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="6dp"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_search"/>
 
                 <EditText
+                    android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:background="@null"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
                     android:gravity="center_vertical"
-                    android:hint="Search"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
-                    tools:ignore="AutoFill"/>
+                    tools:ignore="AutoFill,RtlCompat" />
 
             </LinearLayout>
 
@@ -197,20 +190,47 @@
 
             </androidx.cardview.widget.CardView>
 
-<!--            <Button-->
-<!--                android:id="@+id/backB"-->
-<!--                android:layout_width="match_parent"-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/cardDash3"-->
+<!--                android:layout_width="0dp"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="50dp"-->
-<!--                android:layout_marginTop="50dp"-->
-<!--                android:layout_marginEnd="50dp"-->
-<!--                android:text="Back"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/descCardDash"-->
+<!--                android:layout_marginStart="120dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="120dp"-->
+<!--                app:cardBackgroundColor="@color/white"-->
+<!--                app:cardCornerRadius="8dp"-->
 <!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/cardDash1"-->
-<!--                app:layout_constraintVertical_bias="0.0" />-->
+<!--                app:layout_constraintTop_toBottomOf="@id/cardDash2">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="15dp"-->
+<!--                    tools:ignore="UseCompoundDrawables">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="120dp"-->
+<!--                        android:layout_height="120dp"-->
+<!--                        android:contentDescription="@string/app_name"-->
+<!--                        android:src="@drawable/ic_menu"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="Detail Pesanan"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                </LinearLayout>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/descCardDash"
@@ -224,7 +244,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardDash1">
+                app:layout_constraintTop_toBottomOf="@id/cardDash2">
 
                 <TextView
                     android:id="@+id/RntlTvbot"

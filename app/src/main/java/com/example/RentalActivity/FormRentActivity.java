@@ -26,8 +26,8 @@ public class FormRentActivity extends AppCompatActivity {
 
     Spinner spinner;
     ActionBar actionBar;
-    TextView tvName;
-    EditText etDate, etNamaPsn, etAlamatPsn, etNohpPsn, etMobilPsn, etDurasiPsn, etHarga;
+    TextView halloUser;
+    EditText etDate, etNamaPsn, etAlamatPsn, etNohpPsn;
     DatePickerDialog.OnDateSetListener setListener;
     DBHelper db;
     Button btnPsn;
@@ -37,7 +37,6 @@ public class FormRentActivity extends AppCompatActivity {
     String date="";
     String valueofspin="";
     String strHarga="";
-    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,8 @@ public class FormRentActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        db = new DBHelper(this);
 
         //form
         etNamaPsn = (EditText)findViewById(R.id.etNamaPs);
@@ -91,7 +92,7 @@ public class FormRentActivity extends AppCompatActivity {
 
 
         //database
-        db = new DBHelper(this);
+//        db = new DBHelper(this);
         btnPsn = findViewById(R.id.btnPsnTrans);
 
         etDate = findViewById(R.id.etInputTgl);
@@ -130,9 +131,10 @@ public class FormRentActivity extends AppCompatActivity {
                 String strDur = durasi.trim();
                 String strDate = date.trim();
 
+
                 if (strDur.equals("24 Jam") && strSpinner.equals("Avanza Veloz")){
                     strHarga = "300000";
-                } else if (strDur.equals("12 Jam") && strSpinner.equals("Avanza Veloz")){
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Avanza Veloz")){ //sudah
                     strHarga = "200000";
                 }else if (strDur.equals("24 Jam") && strSpinner.equals("Daihatsu Ayla")){
                     strHarga = "300000";
@@ -154,27 +156,30 @@ public class FormRentActivity extends AppCompatActivity {
                     strHarga = "300000";
                 } else if (strDur.equals("12 Jam") && strSpinner.equals("Suzuki Ertiga")) {
                     strHarga = "250000";
-                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda Jazz")) {
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda Jazz")) { //sudah
                     strHarga = "350000";
                 } else if (strDur.equals("12 Jam") && strSpinner.equals("Honda Jazz")) {
                     strHarga = "300000";
-                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda CrV")) {
+                } else if (strDur.equals("24 Jam") && strSpinner.equals("Honda Crv")) {
                     strHarga = "350000";
-                } else if (strDur.equals("12 Jam") && strSpinner.equals("Honda CrV")) {
+                } else if (strDur.equals("12 Jam") && strSpinner.equals("Honda Crv")) {
                     strHarga = "300000";
                 }
 
+                if (strNama.equals("") || strAlt.equals("") || strNohp.equals("") || strSpinner.equals("") || strDur.equals("") || strDate.equals("")){
+                    Toast.makeText(getApplicationContext(), "Form Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                } else {
+                    Boolean insertPesanan = db.insertPesanan(strNama, strAlt, strDur, strNohp, strDate, strSpinner, strHarga);
+                    if (insertPesanan == true){
+                        Toast.makeText(getApplicationContext(),"Input sukses",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(FormRentActivity.this, DashActivity.class);
+                        startActivity(i);
+                        finish();
+                    } else{
+                        Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                    }
 
-                Boolean insertPesanan = db.insertPesanan(strNama, strAlt, strDur, strNohp, strDate, strSpinner, strHarga);
-                if (insertPesanan == true){
-                    Toast.makeText(getApplicationContext(),"Input sukses",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(FormRentActivity.this, DashActivity.class);
-                    startActivity(i);
-                    finish();
-                } else{
-                    Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 

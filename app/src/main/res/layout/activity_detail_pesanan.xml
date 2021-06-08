@@ -4,6 +4,238 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailPesananActivity">
+    tools:context=".DetailPesanan"
+    android:background="@color/white"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:id="@+id/cdMenuDash"
+            >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/headbackground"
+            android:scaleType="centerCrop"
+            android:id="@+id/imgHdCtg"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imgHdCtg"
+            />
+        <View
+            android:id="@+id/VwHdCtg"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgHdCtg"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvWelcomeDash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:textAlignment="center"
+                android:text="Detail Pesanan"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgMenuDash"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/search_bk"
+                app:layout_constraintTop_toBottomOf="@id/tvWelcomeDash"
+                android:gravity="center_vertical"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="600dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/VwHdCtg"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    app:strokeColor="@color/colorPrimary"
+                    app:strokeWidth="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/idPenyewa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Identitas Penyewa"
+                            android:textColor="@color/black"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtName"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/idPenyewa"
+                            android:layout_marginTop="20dp"
+                            android:text="Nama Penyewa :"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HNama"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtName"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/txtAlamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/HNama"
+                            android:layout_marginTop="10dp"
+                            android:text="Alamat :"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HAlamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtAlamat"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/txtTlp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/HAlamat"
+                            android:layout_marginTop="10dp"
+                            android:text="No. Telp/HP :"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HTelp"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtTlp"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+
+                        <TextView
+                            android:id="@+id/dtMobil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/HTelp"
+                            android:layout_marginTop="15dp"
+                            android:text="Data Mobil"
+                            android:textColor="@color/black"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtMerk"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/dtMobil"
+                            android:layout_marginTop="15dp"
+                            android:text="Merk Mobil :"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HMerk"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtMerk"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/txtHarga"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/HMerk"
+                            android:layout_marginTop="10dp"
+                            android:text="Harga :"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HHarga"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtHarga"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/txtDurasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/HHarga"
+                            android:layout_marginTop="10dp"
+                            android:text="Durasi : "
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/HDurasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/txtDurasi"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

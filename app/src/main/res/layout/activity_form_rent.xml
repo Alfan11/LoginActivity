@@ -27,28 +27,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
+                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/imageheader"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+
             <TextView
                 android:id="@+id/tvWelcomeDash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="20dp"
-                android:text="Welcome in our application "
+                android:layout_marginTop="56dp"
+                android:text="Insert Pesanan"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.207"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgMenuDash"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toTopOf="@+id/view" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,30 +60,6 @@
                 android:orientation="horizontal"
                 android:padding="4dp"
                 app:layout_constraintTop_toBottomOf="@id/tvWelcomeDash">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="6dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_search" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:background="@null"
-                    android:gravity="center_vertical"
-                    android:hint="Search"
-                    android:imeOptions="actionSearch"
-                    android:inputType="text"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="20sp"
-                    tools:ignore="AutoFill" />
-
 
             </LinearLayout>
 
@@ -139,7 +114,7 @@
                         <EditText
                             android:id="@+id/etNamaPs"
                             style="@style/modifiedEditText"
-                            android:hint="Nama Lengkap"
+                            android:hint="Username"
                             android:inputType="textPersonName"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>

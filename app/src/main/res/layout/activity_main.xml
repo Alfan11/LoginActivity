@@ -65,6 +65,7 @@
         android:id="@+id/tVTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:text="Car"
         android:textColor="@color/bkcolor"
         android:textSize="20dp"
@@ -74,7 +75,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tVTitle1"
         app:layout_constraintTop_toBottomOf="@+id/imgHeader"
-        app:layout_constraintVertical_bias="0.591" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/tVTitle1"
@@ -94,17 +95,16 @@
         app:layout_constraintVertical_bias="0.103" />
 
 
-    
     <EditText
         android:id="@+id/userET"
         android:layout_width="278dp"
         android:layout_height="42dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_username_icon"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Username"
         android:inputType="textPersonName"
         android:lineHeight="@android:dimen/app_icon_size"
         android:paddingStart="12dp"

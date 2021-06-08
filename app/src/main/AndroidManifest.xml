@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginActivity">
-        <activity android:name=".DetailPesananActivity" />
+        <activity android:name=".DaftarPesanan"></activity>
+        <activity android:name=".DetailPesanan" />
         <activity android:name=".DashActivity" />
         <activity android:name=".DetailCatalogActivity8" />
         <activity android:name=".DetailCatalogActivity7" />
@@ -21,7 +22,6 @@
         <activity android:name=".DetailCatalogActivity2" />
         <activity android:name=".DetailCatalogActivity1" />
         <activity android:name=".CatalogActivity" />
-        <activity android:name=".DashboardActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivityB" />
         <activity android:name=".MainActivity">

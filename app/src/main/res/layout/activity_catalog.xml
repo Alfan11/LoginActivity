@@ -70,28 +70,20 @@
                 app:layout_constraintTop_toBottomOf="@id/tvWelcomeDash"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="6dp"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_search"/>
 
                 <EditText
+                    android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:background="@null"
+                    android:textAlignment="center"
                     android:gravity="center_vertical"
-                    android:hint="Search"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
-                    tools:ignore="AutoFill"/>
+                    tools:ignore="AutoFill,RtlCompat" />
 
             </LinearLayout>
 

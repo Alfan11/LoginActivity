@@ -43,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         ig = findViewById(R.id.instaLogo);
 
         //database
-        db = new DBHelper(this);
+        db = new DBHelper(MainActivity.this);
 
         //login
+
         buttonLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         if (updateSession == true) {
                             Toast.makeText(getApplicationContext(), "Berhasil masuk", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(MainActivity.this, DashActivity.class);
+                            i.putExtra("nametest",strUsername);
                             startActivity(i);
                             finish();
                         }
@@ -70,6 +72,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+//        buttonLog.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                boolean isExist = db.checkLogN(username.getText().toString(), password.getText().toString());
+//
+//                if (isExist) {
+//                    Toast.makeText(getApplicationContext(), "Berhasil masuk", Toast.LENGTH_SHORT).show();
+//                    Intent i = new Intent(MainActivity.this, DashActivity.class);
+//
+//                    startActivity(i);
+//                    finish();
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Login Gagal, Sesuaikan Username & Password", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
+
 
 
         //register
