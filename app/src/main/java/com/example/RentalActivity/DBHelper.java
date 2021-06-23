@@ -32,9 +32,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 " nohppsn text," +
                 " date text," +
                 " merkmobil text," +
-                " harga text" +
+                " harga text," +
+                " usernameP text" +
                 ")" +
                 "");
+//        db.execSQL("CREATE TABLE user(username text PRIMARY KEY AUTOINCREMENT, password text, email text, nohpin text)");
+//        db.execSQL("CREATE TABLE pesanan(idtest integer PRIMARY KEY AUTOINCREMENT," +
+//                " namatest text," +
+//                " alamat text," +
+//                " durasi text," +
+//                " nohppsn text," +
+//                " date text," +
+//                " merkmobil text," +
+//                " harga text" +
+//                ")" +
+//                "");
         db.execSQL("INSERT INTO session(id, login) VALUES(1, 'kosong')");
     }
 
@@ -90,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Insert test
-    public Boolean insertPesanan(String namatest ,String alamat, String durasi, String nphppsn, String date, String merkmobil, String harga){
+    public Boolean insertPesanan(String namatest ,String alamat, String durasi, String nphppsn, String date, String merkmobil, String harga, String usernameP){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("namatest",namatest);
@@ -100,6 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("date",date);
         contentValues.put("merkmobil",merkmobil);
         contentValues.put("harga",harga);
+        contentValues.put("usernameP",usernameP);
         long insert = db.insert("pesanan",null,contentValues);
         if (insert == -1){
             return false;

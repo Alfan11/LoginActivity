@@ -27,7 +27,7 @@ public class FormRentActivity extends AppCompatActivity {
     Spinner spinner;
     ActionBar actionBar;
     TextView halloUser;
-    EditText etDate, etNamaPsn, etAlamatPsn, etNohpPsn;
+    EditText etDate, etNamaPsn, etAlamatPsn, etNohpPsn, etUsrPsn;
     DatePickerDialog.OnDateSetListener setListener;
     DBHelper db;
     Button btnPsn;
@@ -53,6 +53,7 @@ public class FormRentActivity extends AppCompatActivity {
         etNamaPsn = (EditText)findViewById(R.id.etNamaPs);
         etAlamatPsn = (EditText)findViewById(R.id.etAlamatPs);
         etNohpPsn = (EditText)findViewById(R.id.etNoHpPs);
+        etUsrPsn = (EditText)findViewById(R.id.etUsrP);
 
         //radiobuttongroup
         rg = findViewById(R.id.rgDurasi);
@@ -130,6 +131,8 @@ public class FormRentActivity extends AppCompatActivity {
                 String strSpinner = valueofspin.trim();
                 String strDur = durasi.trim();
                 String strDate = date.trim();
+                String strUsrP = etUsrPsn.getText().toString();
+
 
 
                 if (strDur.equals("24 Jam") && strSpinner.equals("Avanza Veloz")){
@@ -169,11 +172,11 @@ public class FormRentActivity extends AppCompatActivity {
                 if (strNama.equals("") || strAlt.equals("") || strNohp.equals("") || strSpinner.equals("") || strDur.equals("") || strDate.equals("")){
                     Toast.makeText(getApplicationContext(), "Form Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean insertPesanan = db.insertPesanan(strNama, strAlt, strDur, strNohp, strDate, strSpinner, strHarga);
+                    Boolean insertPesanan = db.insertPesanan(strNama, strAlt, strDur, strNohp, strDate, strSpinner, strHarga, strUsrP);
                     if (insertPesanan == true){
                         Toast.makeText(getApplicationContext(),"Input sukses",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(FormRentActivity.this, DashActivity.class);
-                        startActivity(i);
+//                        Intent i = new Intent(FormRentActivity.this, DashActivity.class);
+//                        startActivity(i);
                         finish();
                     } else{
                         Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();

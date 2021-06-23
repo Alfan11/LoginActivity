@@ -25,7 +25,7 @@ public class DaftarPesanan extends AppCompatActivity {
     String[] daftar;
     int[] id;
     ListView listView1;
-    protected Cursor cursor;
+    protected Cursor cursor, cursor2;
     DBHelper db;
     public static DaftarPesanan m;
     ActionBar actionBar;
@@ -50,13 +50,16 @@ public class DaftarPesanan extends AppCompatActivity {
 
     public void RefreshList() {
         SQLiteDatabase DBHelp = db.getReadableDatabase();
-        cursor = DBHelp.rawQuery("SELECT * FROM pesanan", null);
+        cursor = DBHelp.rawQuery("SELECT * FROM pesanan, user WHERE pesanan.usernameP = user.username", null);
+        cursor2 = DBHelp.rawQuery("SELECT * FROM user", null);
         daftar = new String[cursor.getCount()];
         cursor.moveToFirst();
-        for (int i = 0; i < cursor.getCount(); i++) {
-            cursor.moveToPosition(i);
-            daftar[i] = cursor.getString(1).toString();
-        }
+        cursor2.moveToFirst();
+
+                for (int i = 0; i < cursor.getCount(); i++) {
+                    cursor.moveToPosition(i);
+                    daftar[i] = cursor.getString(1).toString();
+                }
         ListView listView = (ListView) findViewById(R.id.listView1);
         listView.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, daftar));
         listView.setSelected(true);
@@ -66,7 +69,7 @@ public class DaftarPesanan extends AppCompatActivity {
                 final String selection = daftar[arg2];
                 final CharSequence[] dialogitem = {"Lihat Data"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(DaftarPesanan.this);
-                builder.setTitle("Rental Mobil");
+                builder.setTitle("Detail Pesanan");
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {

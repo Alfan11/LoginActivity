@@ -114,6 +114,17 @@
                         <EditText
                             android:id="@+id/etNamaPs"
                             style="@style/modifiedEditText"
+                            android:hint="Nama Lengkap"
+                            android:inputType="textPersonName"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tvInputUsr"
+                        style="@style/parent">
+
+                        <EditText
+                            android:id="@+id/etUsrP"
+                            style="@style/modifiedEditText"
                             android:hint="Username"
                             android:inputType="textPersonName"
                             android:maxLines="1" />
@@ -197,6 +208,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tvInputTGL"
                         style="@style/parent">
+
                         <EditText
                             android:id="@+id/etInputTgl"
                             style="@style/modifiedEditText"

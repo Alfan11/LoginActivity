@@ -107,15 +107,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Register
-        //signUp.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-           // public void onClick(View v) {
-             //   Intent i = new Intent(getApplicationContext(),SignUpActivity.class);
-               // startActivity(i);
-            //}
-        //});
-
         ig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

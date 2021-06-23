@@ -61,8 +61,8 @@ public class DashActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.homeNav:
-                        startActivity(new Intent(getApplicationContext(),DashActivity.class));
-                        overridePendingTransition(0,0);
+//                        startActivity(new Intent(getApplicationContext(),DashActivity.class));
+//                        overridePendingTransition(0,0);
                         return true;
                     //LOGOUT
                     case R.id.logoutNav:
