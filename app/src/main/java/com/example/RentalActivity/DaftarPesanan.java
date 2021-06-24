@@ -51,15 +51,12 @@ public class DaftarPesanan extends AppCompatActivity {
     public void RefreshList() {
         SQLiteDatabase DBHelp = db.getReadableDatabase();
         cursor = DBHelp.rawQuery("SELECT * FROM pesanan, user WHERE pesanan.usernameP = user.username", null);
-        cursor2 = DBHelp.rawQuery("SELECT * FROM user", null);
         daftar = new String[cursor.getCount()];
         cursor.moveToFirst();
-        cursor2.moveToFirst();
-
-                for (int i = 0; i < cursor.getCount(); i++) {
-                    cursor.moveToPosition(i);
-                    daftar[i] = cursor.getString(1).toString();
-                }
+        for (int i = 0; i < cursor.getCount(); i++) {
+            cursor.moveToPosition(i);
+            daftar[i] = cursor.getString(1).toString();
+        }
         ListView listView = (ListView) findViewById(R.id.listView1);
         listView.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, daftar));
         listView.setSelected(true);
@@ -67,7 +64,7 @@ public class DaftarPesanan extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView arg0, View arg1, int arg2, long arg3) {
                 final String selection = daftar[arg2];
-                final CharSequence[] dialogitem = {"Lihat Data"};
+                final CharSequence[] dialogitem = {"Lihat Data","Hapus Data"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(DaftarPesanan.this);
                 builder.setTitle("Detail Pesanan");
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -78,6 +75,12 @@ public class DaftarPesanan extends AppCompatActivity {
                                 Intent i = new Intent(DaftarPesanan.this, DetailPesanan.class);
                                 i.putExtra("namatest", selection);
                                 startActivity(i);
+                                break;
+                            }
+                            case 1: {
+                                SQLiteDatabase DB = db.getWritableDatabase();
+                                DB.execSQL("DELETE FROM pesanan WHERE namatest =  '" + selection + "'");
+                                RefreshList();
                                 break;
                             }
                         }

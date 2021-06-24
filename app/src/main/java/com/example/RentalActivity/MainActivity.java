@@ -3,6 +3,7 @@ package com.example.RentalActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,14 +113,18 @@ public class MainActivity extends AppCompatActivity {
         ig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Belum ada ig nya mon maap",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://www.instagram.com/alfancahyo/"));
+                startActivity(i);
             }
         });
 
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Ini juga belum ada hehe",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://facebook.com"));
+                startActivity(i);
             }
         });
 

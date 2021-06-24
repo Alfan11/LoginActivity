@@ -48,7 +48,6 @@ public class DashActivity extends AppCompatActivity {
 
         card1 = (CardView) findViewById(R.id.cardDash1);
         card2 = (CardView) findViewById(R.id.cardDash2);
-        btnBack = findViewById(R.id.backB);
         bottomNavigationView = findViewById(R.id.botNavView);
 
 

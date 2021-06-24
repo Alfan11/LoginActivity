@@ -23,7 +23,6 @@
         <activity android:name=".DetailCatalogActivity1" />
         <activity android:name=".CatalogActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivityB" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
